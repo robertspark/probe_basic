@@ -5,6 +5,9 @@ Development Install
 
 **Probe Basic Development Installation Guide**
 
+**PYTHON3 INSTALL INSTRUCTIONS > 2.8 versions of LinuxCNC**
+**STEP 1 below is only applicable to stable (present non-python3 versions of LinuxCNC.   Install LinuxOS (LinuxMX-21 or Debian 11 Bullseye, clone LinuxCNC from git, build and compile *.debs and install via dpkg, and then follow instructions from STEP 2 onwards.**
+
 
 **Note: Probe Basic is currently designed for 1920x1080 screen sizes only!**
 
@@ -17,7 +20,7 @@ Development Install
 
     http://www.linuxcnc.org/downloads/
 
-Select the "LinuxCNC 2.8.0 Debian 10 Buster PREEMPT-RT ISO" option. you will need to make a bootable dvd or USB thumb drive depending on how you plan to install.  The below software is extremely easy and works flawlessly with linux debian OS images. Below is the link for it. I recommend using 2-4gb USB drive for quicker flashing.
+Select the "LinuxCNC 2.8.2 Debian 10 Buster PREEMPT-RT ISO" option. you will need to make a bootable dvd or USB thumb drive depending on how you plan to install.  The below software is extremely easy and works flawlessly with linux debian OS images. Below is the link for it. I recommend using 2-4gb USB drive for quicker flashing.
 
 ::
 
@@ -46,11 +49,11 @@ Copy the following in the main terminal it is all one line, hit enter, select Y 
 
 ::
 
-    sudo apt install python-pyqt5 python-pyqt5.qtquick python-dbus.mainloop.pyqt5 python-pyqt5.qtopengl python-pyqt5.qsci python-pyqt5.qtmultimedia python-pyqt5.qtwebkit qml-module-qtquick-controls gstreamer1.0-plugins-bad libqt5multimedia5-plugins pyqt5-dev-tools python-dev python-setuptools python-pip git:
+    sudo apt install python3-pyqt5 python3-pyqt5.qtquick python3-dbus.mainloop.pyqt5 python3-pyqt5.qtopengl python3-pyqt5.qsci python3-pyqt5.qtmultimedia python3-pyqt5.qtwebkit qml-module-qtquick-controls gstreamer1.0-plugins-bad libqt5multimedia5-plugins pyqt5-dev-tools python3-dev python3-setuptools python3-pip git:
 
 ::
 
-    sudo apt install qttools5.dev qttools5-dev-tools python-pip
+    sudo apt install qttools5.dev qttools5-dev-tools python3-pip
 
 
 **4- Install qtpyvcp**
@@ -59,7 +62,7 @@ Copy the following in the main terminal, hit enter, select Y for yes if asked at
 
 ::
 
-    git clone https://github.com/kcjengr/qtpyvcp qtpyvcp
+    git clone -b python_master https://github.com/kcjengr/qtpyvcp qtpyvcp
 
     cd qtpyvcp
 
@@ -82,7 +85,7 @@ Copy the following in the main terminal, hit enter.
 
 ::
 
-    git clone https://github.com/kcjengr/probe_basic.git
+    git clone -b python3 https://github.com/kcjengr/probe_basic probe_basic
 
 
 **6- Setup the probe_basic directory and install using pip.**
@@ -110,6 +113,24 @@ And install the conversational widgets
 
     pip install git+https://github.com/kcjengr/qtpyvcp.conversational-gcode.git
 
+**Or alternatively**, to install from local git clone as development install
+
+Copy the following in the main terminal, hit enter.
+
+::
+
+    git clone https://github.com/kcjengr/qtpyvcp.conversational-gcode qtpyvcp.conversational-gcode
+
+From the main terminal paste the following and press enter after each, if asked, type Y and enter to continue install.
+
+::
+    
+    cd qtpyvcp.conversational-gcode
+
+    qcompile .
+
+    pip install -e .
+    
 
 More details about conversational widgets:
 
